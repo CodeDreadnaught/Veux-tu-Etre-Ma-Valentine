@@ -13,7 +13,7 @@ export default async function MailPage() {
 
   return (
     <>
-      <div className="hidden lg:block goat">
+      <div className="hidden lg:block">
         <Mail
           accounts={accounts}
           mails={mails}
