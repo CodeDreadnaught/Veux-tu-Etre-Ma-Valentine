@@ -2,9 +2,9 @@ import { ComponentProps } from "react";
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 
 import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { Mail } from "@/app/mail/data";
 import { useMail } from "@/app/mail/use-mail";
 
@@ -16,7 +16,7 @@ export function MailList({ items }: MailListProps) {
   const [mail, setMail] = useMail();
 
   return (
-    <ScrollArea className="h-screen">
+    <ScrollArea>
       <div className="flex flex-col gap-2 p-4 pt-0">
         {items.map(item => (
           <button
@@ -32,41 +32,50 @@ export function MailList({ items }: MailListProps) {
               })
             }
           >
-            <div className="flex w-full flex-col gap-1">
-              <div className="flex items-center">
-                <div className="flex items-center gap-2">
-                  <div className="font-semibold">{item.name}</div>
-                  {!item.read && (
-                    <span className="flex h-2 w-2 rounded-full bg-blue-600" />
-                  )}
+            <div className="flex gap-3">
+              <Avatar className="size-12">
+                <AvatarImage
+                  className="object-cover size-full"
+                  src={item.profileImage}
+                  alt="Avatar Image"
+                />
+                <AvatarFallback>
+                  {item.name
+                    .split(" ")
+                    .map(chunk => chunk[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <div className="flex w-full flex-col gap-1">
+                  <div className="flex items-center">
+                    <div className="flex items-center gap-2">
+                      <div className={`${!item.read && "font-semibold"}`}>
+                        {item.name}
+                      </div>
+                    </div>
+                    <div
+                      className={cn(
+                        "ml-auto text-xs",
+                        mail.selected === item.id
+                          ? "text-foreground"
+                          : "text-muted-foreground"
+                      )}
+                    >
+                      {formatDistanceToNow(new Date(item.date), {
+                        addSuffix: true,
+                      })}
+                    </div>
+                  </div>
+                  <div className={`text-xs ${!item.read && "font-medium"}`}>
+                    {item.subject}
+                  </div>
                 </div>
-                <div
-                  className={cn(
-                    "ml-auto text-xs",
-                    mail.selected === item.id
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {formatDistanceToNow(new Date(item.date), {
-                    addSuffix: true,
-                  })}
+                <div className="line-clamp-2 text-xs text-muted-foreground">
+                  {item.text.substring(0, 300)}
                 </div>
               </div>
-              <div className="text-xs font-medium">{item.subject}</div>
             </div>
-            <div className="line-clamp-2 text-xs text-muted-foreground">
-              {item.text.substring(0, 300)}
-            </div>
-            {item.labels.length ? (
-              <div className="flex items-center gap-2">
-                {item.labels.map(label => (
-                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
-                    {label}
-                  </Badge>
-                ))}
-              </div>
-            ) : null}
           </button>
         ))}
       </div>

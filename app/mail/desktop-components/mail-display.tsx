@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { addDays } from "date-fns/addDays";
 import { addHours } from "date-fns/addHours";
 import { format } from "date-fns/format";
@@ -44,11 +47,12 @@ interface MailDisplayProps {
 }
 
 export function MailDisplay({ mail }: MailDisplayProps) {
-  const today = new Date();
+  const [typing, setTyping] = useState<boolean>(false),
+    today = new Date();
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex items-center p-2">
+    <div className="desktop-view-mail-section relative flex h-screen overflow-y-auto flex-col">
+      <div className="sticky w-full top-0 bg-white flex items-center p-2 z-50">
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
@@ -189,7 +193,11 @@ export function MailDisplay({ mail }: MailDisplayProps) {
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
               <Avatar>
-                <AvatarImage alt={mail.name} />
+                <AvatarImage
+                  className="object-cover size-full"
+                  src={mail.profileImage}
+                  alt={mail.name}
+                />
                 <AvatarFallback>
                   {mail.name
                     .split(" ")
@@ -200,13 +208,13 @@ export function MailDisplay({ mail }: MailDisplayProps) {
               <div className="grid gap-1">
                 <div className="font-semibold">{mail.name}</div>
                 <div className="line-clamp-1 text-xs">{mail.subject}</div>
-                <div className="line-clamp-1 text-xs">
+                <div className="text-xs">
                   <span className="font-medium">Reply-To:</span> {mail.email}
                 </div>
               </div>
             </div>
             {mail.date && (
-              <div className="ml-auto text-xs text-muted-foreground">
+              <div className="ml-auto text-xs text-muted-foreground text-righ">
                 {format(new Date(mail.date), "PPpp")}
               </div>
             )}
@@ -216,12 +224,14 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             {mail.text}
           </div>
           <Separator className="mt-auto" />
-          <div className="p-4">
+          <div className="p-4 w-full sticky bottom-0 bg-white">
             <form>
               <div className="grid gap-4">
                 <Textarea
-                  className="p-4"
+                  className={`p-2 ${typing && "h-32"} transition-colors`}
                   placeholder={`Reply ${mail.name}...`}
+                  onFocus={() => setTyping(true)}
+                  onBlur={() => setTyping(false)}
                 />
                 <div className="flex items-center">
                   <Label

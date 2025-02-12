@@ -64,11 +64,21 @@
     @apply border-border;
   }
 
+  html {
+    interpolate-size: allow-keywords;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
 
-  body::-webkit-scrollbar {
+  body::-webkit-scrollbar,
+  textarea::-webkit-scrollbar,
+  .desktop-view-mail-section::-webkit-scrollbar {
     @apply hidden
   }
+}
+
+* {
+  /* outline: 1px solid red; */
 }
