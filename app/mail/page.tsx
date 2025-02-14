@@ -34,13 +34,7 @@ export default async function MailPage() {
         />
       </div>
       <div className="lg:hidden">
-        <MobileMail
-          accounts={accounts}
-          mails={mails}
-          defaultLayout={defaultLayout}
-          defaultCollapsed={defaultCollapsed}
-          navCollapsedSize={4}
-        />
+        <MobileMail mails={mails} />
       </div>
     </>
   );

@@ -9,31 +9,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { MailList } from "@/app/mail/mobile-components/mail-list";
 import { type Mail } from "@/app/mail/data";
-import { useMail } from "@/app/mail/use-mail";
 import SideNavigation from "./side-navigation";
 import { recipentName } from "@/app/mail/data";
 
 interface MailProps {
-  accounts: {
-    label: string;
-    email: string;
-    icon: React.ReactNode;
-  }[];
   mails: Mail[];
-  defaultLayout: number[] | undefined;
-  defaultCollapsed?: boolean;
-  navCollapsedSize: number;
 }
 
-export function MobileMail({
-  accounts,
-  mails,
-  defaultLayout = [20, 32, 48],
-  defaultCollapsed = false,
-  navCollapsedSize,
-}: MailProps) {
-  const [mail] = useMail();
-
+export function MobileMail({ mails }: MailProps) {
   return (
     <TooltipProvider delayDuration={0}>
       <Tabs defaultValue="all">

@@ -1,9 +1,7 @@
-import { ComponentProps } from "react";
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Mail } from "@/app/mail/data";
 import { useMail } from "@/app/mail/use-mail";
@@ -81,18 +79,4 @@ export function MailList({ items }: MailListProps) {
       </div>
     </ScrollArea>
   );
-}
-
-function getBadgeVariantFromLabel(
-  label: string
-): ComponentProps<typeof Badge>["variant"] {
-  if (["work"].includes(label.toLowerCase())) {
-    return "default";
-  }
-
-  if (["personal"].includes(label.toLowerCase())) {
-    return "outline";
-  }
-
-  return "secondary";
 }
