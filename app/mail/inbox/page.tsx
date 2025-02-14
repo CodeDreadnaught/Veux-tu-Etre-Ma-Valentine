@@ -22,7 +22,6 @@ const Mobile = () => {
       };
 
       setIsMobileOrTabletDevice(mediaQueryList.matches);
-
       mediaQueryList.addEventListener("change", handleMediaQueryChange);
 
       return () => {
