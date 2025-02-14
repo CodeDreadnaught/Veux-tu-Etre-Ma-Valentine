@@ -1,0 +1,35 @@
+{
+  "name": "Veux-tu Etre Ma Valentine",
+  "short_name": "Veux-tu Etre Ma Valentine",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "description": "Veux-tu Etre Ma Valentine is woven with the threads of devotion, each element carefully placed to create a tapestry of love with you as the sole inspiration. Every single detail was prudently considered, every pixel precision-placed to create a haven that whispers how I feel about you. The words and the very essence of this digital sanctuary was designed to envelop you in a warm embrace. As you wander through this curated space, I hope that you feel the love and intention that pours from every corner, every curve and every gentle nuance."
+}
