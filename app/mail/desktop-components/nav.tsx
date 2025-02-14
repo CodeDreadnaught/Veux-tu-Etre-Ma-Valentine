@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
+import { redirect } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -56,6 +57,12 @@ export function Nav({ links, isCollapsed }: NavProps) {
             </Tooltip>
           ) : (
             <Link
+              onClick={() => {
+                if (link.title === "Logout") {
+                  localStorage.clear();
+                  redirect("/login");
+                }
+              }}
               key={index}
               href="#"
               className={cn(

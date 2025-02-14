@@ -13,6 +13,7 @@ import {
   ShoppingCart,
   Trash2,
   Users2,
+  LogOut,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -167,9 +168,9 @@ export function Mail({
                 variant: "ghost",
               },
               {
-                title: "Promotions",
-                label: "21",
-                icon: Archive,
+                title: "Logout",
+                label: "",
+                icon: LogOut,
                 variant: "ghost",
               },
             ]}

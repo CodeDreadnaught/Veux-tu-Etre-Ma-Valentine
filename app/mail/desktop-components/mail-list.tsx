@@ -25,12 +25,12 @@ export function MailList({ items }: MailListProps) {
               "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
               mail.selected === item.id && "bg-muted"
             )}
-            onClick={() =>
+            onClick={() => {
               setMail({
                 ...mail,
                 selected: item.id,
-              })
-            }
+              });
+            }}
           >
             <div className="flex gap-3">
               <Avatar className="size-12">

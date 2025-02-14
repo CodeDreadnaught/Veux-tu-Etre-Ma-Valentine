@@ -1,3 +1,5 @@
+"use client";
+
 import AvatarIcon from "./avatar-icon";
 
 export const recipentName = process.env.NEXT_PUBLIC_RECIPIENT_NAME;
@@ -5,12 +7,22 @@ export const recipentEmail = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
 
 export const mails = [
   {
+    id: "5a8ccb902-12c4-1143e1-840d-7b25b5ee77535",
+    profileImage: "/olumide.jpg",
+    name: "Olumide Akinsoyinu",
+    email: "olumideakinsoyinu@gmail.com",
+    subject: "Happy Valentine's Day",
+    text: "Baby-girl,\n\nI must have done something extremely remarkable in a past life to get you in this one.\n\nYou are who I dreamed up when I was little. But better, way way better.\n\nTo be candid, you are the best part of everyday for me and this by all standards is a gross understatement.\n\nYou are to me what oxygen is to humans.\n\nHappy Valentine's Day, Gorgeous.\n\n\nNow and Always,\nO.A Akinsoyinu",
+    date: "2025-02-14T00:00:00",
+    read: false,
+  },
+  {
     id: "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
     profileImage: "/olumide.jpg",
     name: "Olumide Akinsoyinu",
     email: "olumideakinsoyinu@gmail.com",
-    subject: "Will you be My Valentine?",
-    text: "Hi, let's have a meeting tomorrow to discuss the project. I've been reviewing the project details and have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the project's success.\n\nPlease come prepared with any questions or insights you may have. Looking forward to our meeting!\n\nBest regards, William",
+    subject: "Will You Be My Valentine?",
+    text: "Hey Gorgeous,\n\nI am right in front of my computer, reflecting on everything we have shared and I cannot but smile.\n\nIn all honesty, I have no idea of what I was doing with my life before you graced it with your presence. Meeting you and falling in love with you is the highlight of the previous year for me. With every passing day, that feeling only deepens and now, I find myself more enchanted by you than I could have ever imagined.\n\nEvery single day, I think about all the incredible moments we have experienced—the quiet tender ones, the loud spontaneous ones and everything in between. Each memory is a treasure that I will keep forever and I cannot help but imagine all the amazing ones still waiting for us in the future.\n\nWith every laugh, every touch, every conversation; I have fallen deeper into something I never knew I could experience. It is not more than just love, it is a feeling of being at home with you; I strongly believe that the universe knew that I needed you.\n\nAnd yet, despite how much I adore you, there is still a part of me that can never fully express the extent of what and how I feel about you. Words do not properly convey what my heart knows to be true and what my heart feels for you.\n\nStunning, you opened up parts of me I never even knew existed and you have made me see the world through a lens of possibility, hope and endless love. The way you light up a room, the way your smile instantly makes everything feel right, the way your presence brings peace to my soul—these are just some of the many reasons I am beyond grateful for you every single day.\n\nWith the fourteen of February around the corner, I find myself wanting to ask you something—something simple yet profound: Will you be my Valentine, Gorgeous?\n\n\nYours Till Eternity Fades,\nO.A Akinsoyinu",
     date: "2025-02-04T17:55:00",
     read: false,
   },
@@ -19,40 +31,10 @@ export const mails = [
     profileImage: "/olumide.jpg",
     name: "Olumide Akinsoyinu",
     email: "olumideakinsoyinu@gmail.com",
-    subject: "Re: Project Update",
-    text: "Thank you for the project update. It looks great! I've gone through the report, and the progress is impressive. The team has done a fantastic job, and I appreciate the hard work everyone has put in.\n\nI have a few minor suggestions that I'll include in the attached document.\n\nLet's discuss these during our next meeting. Keep up the excellent work!\n\nBest regards, Alice",
-    date: "2025-02-04T17:55:00",
+    subject: "The Untitled Mail",
+    text: "I hope the title of this email was not a turn-off, it is themed “The Untitled Mail” because human words are grossly incapable titling what and how I feel about you.\n\nTo be honest, there exist no non-trite way to convey what the aim of this piece is. I am going to be direct and not go around in circles—I love you so much Gorgeous and I cannot say it enough.\n\nI am hopelessly, irredeemably and irrevocably in love with you. The I cannot breathe, heart-squeezing, desperate kind of love; the one where there is no coming back from. For you, God knows that I am all geared up for war—to fight for and with you.\n\nWhen you are not near, even for the littlest of time, my heart misses you so much that it physically aches. I want to have you around always, I want to know what you are thinking and how you feel. Babe, I want to make you so happy that even the word happy would be jealous.\n\nHave I properly explained the extent to which your eyes and smile make my knees weak?\n\nSincerely, I strongly believe that forever is a very short time to spend and be in love with you. You are the passion that I exude, the spark that ignites within me, the fire that fuels my existence. The mountains may rise and fall, the sun might wither away, the sea may claim the land swallow the sky but how I feel about you will never change—not in this universe, not in universes to come.\n\nIt was not a lie when I told you that I cannot remember what I was doing before you graced my life with your presence. You have opened my eyes to the world and shown me that what I was doing before now was not living. I have never felt more alive than when I am with you, I do not want anyone but you. Even if we are right next to each other or a billion kilometers apart, I will always at every point in time want you.\n\nYour Grace, you are everything I never knew that I needed. On a super clear note; I want you, I will always want you, I have wanted you every single day since you bypassed my heart’s defensive mechanism.\n\nIn the grand scheme of Olumide’s function definition, you are the most important parameter. To be candid, you are the only parameter; in your absence I am undefined.\n\nThe thought of you keeps me up at night and I am certain that beyond words, I was not created to live without you. A life without you is not a life that I am interested in. In all my years of wishing and dreaming, I could never have dream-up or mold anyone as perfect as you are.\n\nYou are the yin to my yang.\n\n\nWith Love,\n O.A Akinsoyinu",
+    date: "2025-02-01T06:00:00",
     read: true,
-  },
-  {
-    id: "3e7c3f6d-bdf5-46ae-8d90-171300f27ae2",
-    profileImage: "/olumide.jpg",
-    name: "Olumide Akinsoyinu",
-    email: "olumideakinsoyinu@gmail.com",
-    subject: "Weekend Plans",
-    text: "Any plans for the weekend? I was thinking of going hiking in the nearby mountains. It's been a while since we had some outdoor fun.\n\nIf you're interested, let me know, and we can plan the details. It'll be a great way to unwind and enjoy nature.\n\nLooking forward to your response!\n\nBest, Bob",
-    date: "2025-02-04T17:55:00",
-    read: true,
-  },
-  {
-    id: "61c35085-72d7-42b4-8d62-738f700d4b92",
-    profileImage: "/olumide.jpg",
-    name: "Olumide Akinsoyinu",
-    email: "olumideakinsoyinu@gmail.com",
-    subject: "Re: Question about Budget",
-    text: "I have a question about the budget for the upcoming project. It seems like there's a discrepancy in the allocation of resources.\n\nI've reviewed the budget report and identified a few areas where we might be able to optimize our spending without compromising the project's quality.\n\nI've attached a detailed analysis for your reference. Let's discuss this further in our next meeting.\n\nThanks, Emily",
-    date: "2025-02-04T17:55:00",
-    read: false,
-  },
-  {
-    id: "8f7b5db9-d935-4e42-8e05-1f1d0a3dfb97",
-    profileImage: "/olumide.jpg",
-    name: "Olumide Akinsoyinu",
-    email: "olumideakinsoyinu@gmail.com",
-    subject: "Important Announcement",
-    text: "I have an important announcement to make during our team meeting. It pertains to a strategic shift in our approach to the upcoming product launch. We've received valuable feedback from our beta testers, and I believe it's time to make some adjustments to better meet our customers' needs.\n\nThis change is crucial to our success, and I look forward to discussing it with the team. Please be prepared to share your insights during the meeting.\n\nRegards, Michael",
-    date: "2025-02-04T17:55:00",
-    read: false,
   },
 ];
 

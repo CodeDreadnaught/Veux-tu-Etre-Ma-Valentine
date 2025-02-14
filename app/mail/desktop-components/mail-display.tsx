@@ -6,6 +6,12 @@ import { addHours } from "date-fns/addHours";
 import { format } from "date-fns/format";
 import { nextSaturday } from "date-fns/nextSaturday";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useToast } from "@/hooks/use-toast";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+
 import {
   Archive,
   ArchiveX,
@@ -42,13 +48,55 @@ import {
 } from "@/components/ui/tooltip";
 import { Mail } from "@/app/mail/data";
 
+import sendEmail from "../send-email";
+import { recipentName, recipentEmail } from "@/app/mail/data";
+import type { EmailJSResponseStatus } from "../send-email";
+
 interface MailDisplayProps {
   mail: Mail | null;
 }
 
+const FormSchema = z.object({
+  responseMail: z.string().min(1),
+});
+
 export function MailDisplay({ mail }: MailDisplayProps) {
   const [typing, setTyping] = useState<boolean>(false),
-    today = new Date();
+    today = new Date(),
+    { toast } = useToast();
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      responseMail: "",
+    },
+  });
+
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    const responseObject = {
+      message: data.responseMail,
+      fromSubject: mail?.subject,
+      fromName: recipentName,
+      fromEmail: recipentEmail,
+    };
+
+    const mailDelivered = (await sendEmail(
+      responseObject
+    )) as EmailJSResponseStatus;
+    if (mailDelivered?.status === 200) {
+      form.reset();
+      toast({
+        title: "Email Sent",
+        description: `Your response has been sent to ${mail?.email}.`,
+      });
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Unable to Send Email",
+        description: `An error occured while trying to send your response, please try again.`,
+      });
+    }
+  };
 
   return (
     <div className="desktop-view-mail-section relative flex h-screen overflow-y-auto flex-col">
@@ -225,32 +273,43 @@ export function MailDisplay({ mail }: MailDisplayProps) {
           </div>
           <Separator className="mt-auto" />
           <div className="p-4 w-full sticky bottom-0 bg-white">
-            <form>
-              <div className="grid gap-4">
-                <Textarea
-                  className={`p-2 ${typing && "h-32"} transition-colors`}
-                  placeholder={`Reply ${mail.name}...`}
-                  onFocus={() => setTyping(true)}
-                  onBlur={() => setTyping(false)}
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)}>
+                <FormField
+                  control={form.control}
+                  name="responseMail"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="grid gap-4">
+                          <Textarea
+                            {...field}
+                            className={`p-2 ${
+                              typing && "h-32"
+                            } overflow-hidden transition-all duration-300 ease-in-out resize-none`}
+                            placeholder={`Reply ${mail.name}...`}
+                            onFocus={() => setTyping(true)}
+                            onBlur={() => setTyping(false)}
+                          />
+                          <div className="flex items-center">
+                            <Label
+                              htmlFor="mute"
+                              className="flex items-center gap-2 text-xs font-normal"
+                            >
+                              <Switch id="mute" aria-label="Mute thread" /> Mute
+                              this thread
+                            </Label>
+                            <Button size="sm" className="ml-auto">
+                              Send
+                            </Button>
+                          </div>
+                        </div>
+                      </FormControl>
+                    </FormItem>
+                  )}
                 />
-                <div className="flex items-center">
-                  <Label
-                    htmlFor="mute"
-                    className="flex items-center gap-2 text-xs font-normal"
-                  >
-                    <Switch id="mute" aria-label="Mute thread" /> Mute this
-                    thread
-                  </Label>
-                  <Button
-                    onClick={e => e.preventDefault()}
-                    size="sm"
-                    className="ml-auto"
-                  >
-                    Send
-                  </Button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </Form>
           </div>
         </div>
       ) : (

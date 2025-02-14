@@ -1,14 +1,18 @@
 "use client";
 import { redirect } from "next/navigation";
 
-const Home = () => {
+interface MailLayoutProps {
+  children: React.ReactNode;
+}
+
+const MailLayout = ({ children }: Readonly<MailLayoutProps>) => {
   const seotiwole = JSON.parse(localStorage.getItem("seotiwole")!) || null;
 
   if (!seotiwole) {
     redirect("/login");
   } else {
-    redirect("/mail");
+    return <>{children}</>;
   }
 };
 
-export default Home;
+export default MailLayout;

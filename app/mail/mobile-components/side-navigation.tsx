@@ -30,6 +30,7 @@ import {
   ShoppingCart,
   Trash2,
   Users2,
+  LogOut,
 } from "lucide-react";
 
 const SideNavigation = () => {
@@ -129,9 +130,9 @@ const SideNavigation = () => {
               variant: "ghost",
             },
             {
-              title: "Promotions",
-              label: "21",
-              icon: Archive,
+              title: "Logout",
+              label: "",
+              icon: LogOut,
               variant: "ghost",
             },
           ]}

@@ -1,7 +1,18 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { MobileMail } from "@/app/mail/mobile-components/mail";
 import { Mail } from "@/app/mail/desktop-components/mail";
 import { accounts, mails } from "@/app/mail/data";
+
+const RECIPENT_EMAIL = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Mail | ${RECIPENT_EMAIL}`,
+    description: `Mail section for ${RECIPENT_EMAIL}.`,
+    icons: "/mail-icon.svg",
+  };
+};
 
 export default async function MailPage() {
   const cookiesHeader = (await cookies()) as unknown as any;
