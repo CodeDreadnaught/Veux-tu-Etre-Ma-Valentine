@@ -30,6 +30,12 @@ const Mobile = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!isMobileOrTabletDevice) {
+      router.back();
+    }
+  }, [isMobileOrTabletDevice, router]);
+
   if (isMobileOrTabletDevice) {
     return (
       <TooltipProvider delayDuration={0}>
@@ -39,7 +45,6 @@ const Mobile = () => {
       </TooltipProvider>
     );
   } else {
-    router.back();
     return null;
   }
 };
