@@ -14,18 +14,21 @@ const Mobile = () => {
     useState<boolean>(false);
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia("(max-width: 900px)");
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      setIsMobileOrTabletDevice(event.matches);
-    };
+    if (typeof window !== "undefined") {
+      const mediaQueryList = window.matchMedia("(max-width: 900px)");
 
-    setIsMobileOrTabletDevice(mediaQueryList.matches);
+      const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+        setIsMobileOrTabletDevice(event.matches);
+      };
 
-    mediaQueryList.addEventListener("change", handleMediaQueryChange);
+      setIsMobileOrTabletDevice(mediaQueryList.matches);
 
-    return () => {
-      mediaQueryList.removeEventListener("change", handleMediaQueryChange);
-    };
+      mediaQueryList.addEventListener("change", handleMediaQueryChange);
+
+      return () => {
+        mediaQueryList.removeEventListener("change", handleMediaQueryChange);
+      };
+    }
   }, []);
 
   if (isMobileOrTabletDevice) {
