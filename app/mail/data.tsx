@@ -67,10 +67,6 @@ export const contacts = [
     name: "Noah Martinez",
     email: "noah.martinez@example.com",
   },
-  {
-    name: "Ava Taylor",
-    email: "ava.taylor@example.com",
-  },
 ];
 
 export type Contact = (typeof contacts)[number];
