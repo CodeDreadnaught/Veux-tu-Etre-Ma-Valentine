@@ -15,7 +15,7 @@ export const generateMetadata = (): Metadata => {
 };
 
 export default async function MailPage() {
-  const cookiesHeader = (await cookies()) as unknown as any;
+  const cookiesHeader = await cookies();
   const layout = cookiesHeader.get("react-resizable-panels:layout:mail");
   const collapsed = cookiesHeader.get("react-resizable-panels:collapsed");
 
