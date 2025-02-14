@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { MailDisplay } from "../mobile-components/mail-display";
 import { mails } from "../data";
@@ -8,23 +8,25 @@ import { useMail } from "../use-mail";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const Mobile = () => {
-  const router = useRouter(),
-    [mail] = useMail(),
-    mediaQueryList = window.matchMedia("(max-width: 900px)"),
-    isMobileOrTabletDevice: boolean = mediaQueryList.matches;
+  const router = useRouter();
+  const [mail] = useMail();
+  const [isMobileOrTabletDevice, setIsMobileOrTabletDevice] =
+    useState<boolean>(false);
 
   useEffect(() => {
-    const showPageOnMobileOrTablet = (event: MediaQueryListEvent) => {
-      if (!event.matches) {
-        router.back();
-      }
+    const mediaQueryList = window.matchMedia("(max-width: 900px)");
+    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+      setIsMobileOrTabletDevice(event.matches);
     };
-    mediaQueryList.addEventListener("change", showPageOnMobileOrTablet);
+
+    setIsMobileOrTabletDevice(mediaQueryList.matches);
+
+    mediaQueryList.addEventListener("change", handleMediaQueryChange);
 
     return () => {
-      mediaQueryList.removeEventListener("change", showPageOnMobileOrTablet);
+      mediaQueryList.removeEventListener("change", handleMediaQueryChange);
     };
-  });
+  }, []);
 
   if (isMobileOrTabletDevice) {
     return (
@@ -36,6 +38,7 @@ const Mobile = () => {
     );
   } else {
     router.back();
+    return null;
   }
 };
 
