@@ -24,7 +24,7 @@ const Mobile = () => {
     return () => {
       mediaQueryList.removeEventListener("change", showPageOnMobileOrTablet);
     };
-  }, []);
+  });
 
   if (isMobileOrTabletDevice) {
     return (
