@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect } from "react";
 import { redirect } from "next/navigation";
 
 interface MailLayoutProps {
@@ -6,13 +8,15 @@ interface MailLayoutProps {
 }
 
 const MailLayout = ({ children }: Readonly<MailLayoutProps>) => {
-  const seotiwole = JSON.parse(localStorage.getItem("seotiwole")!) || null;
+  useEffect(() => {
+    const seotiwole = JSON.parse(localStorage.getItem("seotiwole")!) || null;
 
-  if (!seotiwole) {
-    redirect("/login");
-  } else {
-    return <>{children}</>;
-  }
+    if (!seotiwole) {
+      redirect("/login");
+    }
+  }, []);
+
+  return <>{children}</>;
 };
 
 export default MailLayout;
