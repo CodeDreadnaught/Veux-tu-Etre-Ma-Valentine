@@ -1,5 +1,8 @@
+"use client";
+
 import useMediaQuery from "@/hooks/use-media-query";
 import { Button } from "@/components/ui/button";
+
 import {
   Dialog,
   DialogContent,
@@ -19,8 +22,7 @@ import {
 import { VisuallyHidden } from "radix-ui";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Mail, PhoneCall, Calendar } from "lucide-react";
-
-import { recipentEmail, recipentName } from "../mail/data";
+import { recipientObject } from "../api/userinfo/userinfo";
 
 interface AdaptiveDrawerDialogueProps {
   open: boolean;
@@ -77,10 +79,12 @@ export function AdaptiveDrawerDialogue({
 }
 
 function ProfileForm({ mobile }: { mobile?: boolean }) {
+  const { name, email } = recipientObject;
+
   return (
     <>
-      <span className="block mt-15 text-xl">{recipentName}</span>
-      <span className="font-normal text-base block my-2">{recipentEmail}</span>
+      <span className="block mt-15 text-xl">{name}</span>
+      <span className="font-normal text-base block my-2">{email}</span>
       <div
         className={`flex items-center mx-auto justify-center gap-5 ${
           mobile && "mb-8"
@@ -93,6 +97,8 @@ function ProfileForm({ mobile }: { mobile?: boolean }) {
 }
 
 function ProfileAvatar() {
+  const { name } = recipientObject;
+
   return (
     <Avatar className="size-40">
       <AvatarImage
@@ -101,10 +107,10 @@ function ProfileAvatar() {
         alt="Avatar Image"
       />
       <AvatarFallback className="text-xs">
-        {recipentName &&
-          recipentName
+        {name &&
+          name
             .split(" ")
-            .map(chunk => chunk[0])
+            .map((chunk: string) => chunk[0])
             .join("")}
       </AvatarFallback>
     </Avatar>

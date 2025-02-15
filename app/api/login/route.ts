@@ -1,9 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
-import jsonwebtoken from "jsonwebtoken";
+import { SignJWT } from "jose";
 import { serialize } from "cookie";
-
-const RECIPIENT_EMAIL = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
-const RECIPIENT_SECRET = process.env.NEXT_PUBLIC_RECIPIENT_SECRET;
+import { RECIPIENT_EMAIL, RECIPIENT_SECRET } from "../userinfo/userinfo";
 
 interface LoginRequestBody {
   email: string;
@@ -15,7 +13,10 @@ export async function POST(req: NextRequest) {
     const { email, password }: LoginRequestBody = await req.json();
 
     if (email === RECIPIENT_EMAIL && password === RECIPIENT_SECRET) {
-      const token = jsonwebtoken.sign({ email }, RECIPIENT_SECRET!);
+      const token = await new SignJWT({ email })
+        .setProtectedHeader({ alg: "HS256" })
+        .setIssuedAt()
+        .sign(new TextEncoder().encode(RECIPIENT_SECRET));
 
       const response = NextResponse.json(
         { message: "Login successful" },

@@ -10,13 +10,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { MailList } from "@/app/mail/mobile-components/mail-list";
 import { type Mail } from "@/app/mail/data";
 import SideNavigation from "./side-navigation";
-import { recipentName } from "@/app/mail/data";
+import { recipientObject } from "@/app/api/userinfo/userinfo";
 
 interface MailProps {
   mails: Mail[];
 }
 
 export function MobileMail({ mails }: MailProps) {
+  const { name } = recipientObject;
+
   return (
     <TooltipProvider delayDuration={0}>
       <Tabs defaultValue="all">
@@ -55,10 +57,10 @@ export function MobileMail({ mails }: MailProps) {
                   alt="Avatar Image"
                 />
                 <AvatarFallback>
-                  {recipentName &&
-                    recipentName
+                  {name &&
+                    name
                       .split(" ")
-                      .map(chunk => chunk[0])
+                      .map((chunk: string) => chunk[0])
                       .join("")}
                 </AvatarFallback>
               </Avatar>

@@ -49,8 +49,8 @@ import {
 import { Mail } from "@/app/mail/data";
 
 import sendEmail from "../send-email";
-import { recipentName, recipentEmail } from "@/app/mail/data";
 import type { EmailJSResponseStatus } from "../send-email";
+import { recipientObject } from "@/app/api/userinfo/userinfo";
 
 interface MailDisplayProps {
   mail: Mail | null;
@@ -65,6 +65,8 @@ export function MailDisplay({ mail }: MailDisplayProps) {
     today = new Date(),
     { toast } = useToast();
 
+  const { name, email } = recipientObject;
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -76,8 +78,8 @@ export function MailDisplay({ mail }: MailDisplayProps) {
     const responseObject = {
       message: data.responseMail,
       fromSubject: mail?.subject,
-      fromName: recipentName,
-      fromEmail: recipentEmail,
+      fromName: name,
+      fromEmail: email,
     };
 
     const mailDelivered = (await sendEmail(

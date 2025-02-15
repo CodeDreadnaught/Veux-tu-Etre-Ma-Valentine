@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { recipentName } from "./data";
+import { RECIPIENT_NAME } from "../api/userinfo/userinfo";
 
 const AvatarIcon = () => {
   return (
@@ -10,9 +10,8 @@ const AvatarIcon = () => {
         alt="Avatar Image"
       />
       <AvatarFallback className="text-xs">
-        {recipentName &&
-          recipentName
-            .split(" ")
+        {RECIPIENT_NAME &&
+          RECIPIENT_NAME.split(" ")
             .map(chunk => chunk[0])
             .join("")}
       </AvatarFallback>

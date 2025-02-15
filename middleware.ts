@@ -1,18 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server";
-import jsonwebtoken from "jsonwebtoken";
+import { jwtVerify } from "jose";
+import { RECIPIENT_SECRET } from "./app/api/userinfo/userinfo";
 
-function isAuthenticated(request: NextRequest): boolean {
-  const { verify } = jsonwebtoken;
+async function isAuthenticated(request: NextRequest): Promise<boolean> {
   const token = request.cookies.get("token")?.value;
-  const RECIPIENT_SECRET = process.env.NEXT_PUBLIC_RECIPIENT_SECRET!;
 
-  if (!token) return false;
+  if (!token || !RECIPIENT_SECRET) return false;
 
   try {
-    verify(token, RECIPIENT_SECRET);
+    await jwtVerify(token, new TextEncoder().encode(RECIPIENT_SECRET));
     return true;
   } catch (error) {
-    console.log(error);
+    console.error("Token verification failed:", error);
     return false;
   }
 }
@@ -23,16 +22,16 @@ function isMobileOrTablet(userAgent: string): boolean {
   );
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Authentication middleware for /mail/* routes
   if (pathname.startsWith("/mail")) {
-    if (!isAuthenticated(request)) {
+    const authenticated = await isAuthenticated(request);
+    if (!authenticated) {
+      console.log("Authentication failed, redirecting to /login");
       return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    // Device check middleware for /mail/inbox
     if (pathname === "/mail/inbox") {
       const userAgent = request.headers.get("user-agent") || "";
       if (!isMobileOrTablet(userAgent)) {

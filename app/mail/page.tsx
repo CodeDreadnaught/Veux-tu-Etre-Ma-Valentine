@@ -3,13 +3,12 @@ import { cookies } from "next/headers";
 import { MobileMail } from "@/app/mail/mobile-components/mail";
 import { Mail } from "@/app/mail/desktop-components/mail";
 import { accounts, mails } from "@/app/mail/data";
-
-const RECIPENT_EMAIL = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
+import { RECIPIENT_EMAIL } from "../api/userinfo/userinfo";
 
 export const generateMetadata = (): Metadata => {
   return {
-    title: `Mail | ${RECIPENT_EMAIL}`,
-    description: `Mail section for ${RECIPENT_EMAIL}.`,
+    title: `Mail | ${RECIPIENT_EMAIL}`,
+    description: `Mail section for ${RECIPIENT_EMAIL}.`,
     icons: "/mail-icon.svg",
   };
 };

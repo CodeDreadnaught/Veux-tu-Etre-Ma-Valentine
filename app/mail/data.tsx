@@ -1,9 +1,5 @@
-"use client";
-
 import AvatarIcon from "./avatar-icon";
-
-export const recipentName = process.env.NEXT_PUBLIC_RECIPIENT_NAME;
-export const recipentEmail = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
+import { recipientObject } from "../api/userinfo/userinfo";
 
 export const mails = [
   {
@@ -12,7 +8,7 @@ export const mails = [
     name: "Olumide Akinsoyinu",
     email: "olumideakinsoyinu@gmail.com",
     subject: "Happy Valentine's Day",
-    text: "Baby-girl,\n\nI must have done something extremely remarkable in a past life to get you in this one.\n\nYou are who I dreamed up when I was little. But better, way way better.\n\nTo be candid, you are the best part of everyday for me and this by all standards is a gross understatement.\n\nYou are to me what oxygen is to humans.\n\nHappy Valentine's Day, Gorgeous.\n\n\nNow and Always,\nO.A Akinsoyinu",
+    text: "Baby-girl,\n\nI must have done something extremely remarkable in a past life to get you in this one.\n\nYou are who I dreamed up when I was little. But better, way way better.\n\nTo be candid, you are the best part of everyday for me and this by all standards is a gross understatement.\n\nMy sun rises and sets with you, you are to me what oxygen is to humans.\n\nHappy Valentine's Day, Gorgeous.\n\n\nNow and Always,\nO.A Akinsoyinu",
     date: "2025-02-14T00:00:00",
     read: false,
   },
@@ -42,8 +38,8 @@ export type Mail = (typeof mails)[number];
 
 export const accounts = [
   {
-    label: recipentName as string,
-    email: recipentEmail as string,
+    label: recipientObject.name,
+    email: recipientObject.email,
     icon: <AvatarIcon />,
   },
 ];

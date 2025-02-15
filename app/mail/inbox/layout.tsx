@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-
-const RECIPENT_EMAIL = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
+import { RECIPIENT_EMAIL } from "@/app/api/userinfo/userinfo";
 
 export const generateMetadata = (): Metadata => {
   return {
-    title: `Mail | ${RECIPENT_EMAIL}`,
-    description: `Mail section for ${RECIPENT_EMAIL}.`,
+    title: `Mail | ${RECIPIENT_EMAIL}`,
+    description: `Mail section for ${RECIPIENT_EMAIL}.`,
     icons: "/mail-icon.svg",
   };
 };

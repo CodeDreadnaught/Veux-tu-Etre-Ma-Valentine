@@ -55,7 +55,7 @@ export function LoginForm({
         }
 
         router.push("/mail");
-        setTimeout(() => setOpen(false), 3500);
+        setTimeout(() => setOpen(false), 4000);
       } else {
         toast({
           variant: "destructive",
