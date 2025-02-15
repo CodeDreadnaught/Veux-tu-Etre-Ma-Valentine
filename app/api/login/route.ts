@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import jsonwebtoken from "jsonwebtoken";
-import cookie from "cookie";
+import { serialize } from "cookie";
 
 const RECIPIENT_EMAIL = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL;
 const RECIPIENT_SECRET = process.env.NEXT_PUBLIC_RECIPIENT_SECRET;
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const { email, password }: LoginRequestBody = await req.json();
 
     if (email === RECIPIENT_EMAIL && password === RECIPIENT_SECRET) {
-      const token = jsonwebtoken.sign({ email }, RECIPIENT_SECRET);
+      const token = jsonwebtoken.sign({ email }, RECIPIENT_SECRET!);
 
       const response = NextResponse.json(
         { message: "Login successful" },
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       );
       response.headers.set(
         "Set-Cookie",
-        cookie.serialize("token", token, {
+        serialize("token", token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
           sameSite: "strict",
@@ -37,8 +37,7 @@ export async function POST(req: NextRequest) {
       { status: 401 }
     );
   } catch (error) {
-    console.log(error);
-
+    console.error(error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -54,7 +53,7 @@ export async function DELETE() {
 
   response.headers.set(
     "Set-Cookie",
-    cookie.serialize("token", "", {
+    serialize("token", "", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",

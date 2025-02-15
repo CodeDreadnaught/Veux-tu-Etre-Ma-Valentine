@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -32,32 +34,41 @@ export function LoginForm({
 
     const emailCharacters = emailRef.current?.value ?? "",
       passwordCharacters = passwordRef.current?.value ?? "",
-      email = emailCharacters.trim().toLocaleLowerCase(),
+      email = emailCharacters.trim().toLowerCase(),
       password = passwordCharacters;
 
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (response.status == 200) {
-      setOpen(true);
+      if (response.ok) {
+        setOpen(true);
 
-      if (emailRef.current && passwordRef.current) {
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
+        if (emailRef.current && passwordRef.current) {
+          emailRef.current.value = "";
+          passwordRef.current.value = "";
+        }
+
+        router.push("/mail");
+        setTimeout(() => setOpen(false), 3500);
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Access Denied",
+          description: `The login credentials you entered are invalid.`,
+        });
       }
-
-      router.push("/mail");
-      setTimeout(() => setOpen(false), 3500);
-    } else {
+    } catch (error) {
+      console.error("Login error:", error);
       toast({
         variant: "destructive",
-        title: "Access Denied",
-        description: `The login credentials you entered are invalid.`,
+        title: "Error",
+        description: "An error occurred during login. Please try again.",
       });
     }
   };
