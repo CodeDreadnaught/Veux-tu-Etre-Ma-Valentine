@@ -1,19 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
+  const router = useRouter();
+
   useEffect(() => {
-    const seotiwole = JSON.parse(localStorage.getItem("seotiwole")!) || null;
-
-    if (!seotiwole) {
-      redirect("/login");
-    } else {
-      redirect("/mail");
-    }
-  }, []);
-
+    router.push("/mail");
+  }, [router]);
   return null;
 };
 

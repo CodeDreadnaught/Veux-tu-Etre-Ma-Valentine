@@ -57,10 +57,15 @@ export function Nav({ links, isCollapsed }: NavProps) {
             </Tooltip>
           ) : (
             <Link
-              onClick={() => {
+              onClick={async () => {
                 if (link.title === "Logout") {
-                  localStorage.clear();
-                  redirect("/login");
+                  const response = await fetch("/api/login", {
+                    method: "DELETE",
+                  });
+
+                  if (response.status == 200) {
+                    redirect("/login");
+                  }
                 }
               }}
               key={index}

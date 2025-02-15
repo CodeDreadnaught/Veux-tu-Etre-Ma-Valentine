@@ -15,9 +15,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
-const RECIPIENT_EMAIL = process.env.NEXT_PUBLIC_RECIPIENT_EMAIL,
-  RECIPIENT_SECRET = process.env.NEXT_PUBLIC_RECIPIENT_SECRET;
-
 export function LoginForm({
   className,
   setOpen,
@@ -30,7 +27,7 @@ export function LoginForm({
     emailRef = useRef<HTMLInputElement | null>(null),
     passwordRef = useRef<HTMLInputElement | null>(null);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const emailCharacters = emailRef.current?.value ?? "",
@@ -38,7 +35,15 @@ export function LoginForm({
       email = emailCharacters.trim().toLocaleLowerCase(),
       password = passwordCharacters;
 
-    if (email === RECIPIENT_EMAIL && password === RECIPIENT_SECRET) {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.status == 200) {
       setOpen(true);
 
       if (emailRef.current && passwordRef.current) {
@@ -46,9 +51,8 @@ export function LoginForm({
         passwordRef.current.value = "";
       }
 
-      localStorage.setItem("seotiwole", JSON.stringify(true));
-      setTimeout(() => setOpen(false), 3500);
       router.push("/mail");
+      setTimeout(() => setOpen(false), 3500);
     } else {
       toast({
         variant: "destructive",
