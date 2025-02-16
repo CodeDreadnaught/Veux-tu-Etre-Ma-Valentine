@@ -54,7 +54,7 @@ export function LoginForm({
           passwordRef.current.value = "";
         }
 
-        router.push("/mail");
+        router.prefetch("/mail");
         setTimeout(() => setOpen(false), 4000);
       } else {
         toast({
