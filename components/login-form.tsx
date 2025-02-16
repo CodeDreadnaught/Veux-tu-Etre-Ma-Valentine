@@ -49,10 +49,15 @@ export function LoginForm({
       if (response.ok) {
         setOpen(true);
 
-        if (emailRef.current && passwordRef.current) {
-          emailRef.current.value = "";
-          passwordRef.current.value = "";
-        }
+        setTimeout(
+          () => () => {
+            if (emailRef.current && passwordRef.current) {
+              emailRef.current.value = "";
+              passwordRef.current.value = "";
+            }
+          },
+          600
+        );
 
         router.replace("/mail");
         globalThis.location.href = "/mail";

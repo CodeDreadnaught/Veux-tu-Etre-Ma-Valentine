@@ -40,9 +40,16 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (pathname.startsWith("/login")) {
+    const authenticated = await isAuthenticated(request);
+    if (authenticated) {
+      console.log("You are already signed in, redirecting to /mail");
+      return NextResponse.redirect(new URL("/mail", request.url));
+    }
+  }
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/mail/:path*"],
+  matcher: ["/mail/:path*", "/login"],
 };
