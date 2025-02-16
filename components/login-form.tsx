@@ -3,7 +3,6 @@
 import type React from "react";
 
 import { useRef } from "react";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,7 +24,6 @@ export function LoginForm({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { toast } = useToast(),
-    router = useRouter(),
     emailRef = useRef<HTMLInputElement | null>(null),
     passwordRef = useRef<HTMLInputElement | null>(null);
 
@@ -54,10 +52,8 @@ export function LoginForm({
           passwordRef.current.value = "";
         }
 
-        setTimeout(() => {
-          setOpen(false);
-          router.replace("/mail");
-        }, 4000);
+        globalThis.location.href = "/mail";
+        setTimeout(() => setOpen(false), 4000);
       } else {
         toast({
           variant: "destructive",
