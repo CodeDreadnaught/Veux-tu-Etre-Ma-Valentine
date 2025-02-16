@@ -6,6 +6,9 @@ export const generateMetadata = (): Metadata => {
     title: `Mail | ${RECIPIENT_EMAIL}`,
     description: `Mail section for ${RECIPIENT_EMAIL}.`,
     icons: "/mail-icon.svg",
+    openGraph: {
+      images: "/mail-icon.svg",
+    },
   };
 };
 
