@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   keywords: ["Veux-tu Etre", "Valentine"],
   metadataBase: new URL("https://veux-tu-etre-ma-valentine.vercel.app"),
   openGraph: {
-    images: "/logo.svg",
+    images: "/logo.png",
   },
   manifest: "/manifest.json",
 };

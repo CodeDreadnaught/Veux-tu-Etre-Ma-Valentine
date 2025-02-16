@@ -5,9 +5,6 @@ export const metadata: Metadata = {
   description:
     "Login to access your profile and all features of Veux-tu Etre Ma Valentine",
   icons: "/login-icon.svg",
-  openGraph: {
-    images: "/login-icon.svg",
-  },
 };
 
 interface LoginLayoutProps {
