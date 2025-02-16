@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   icons: "/logo.svg",
   authors: [{ name: "Olumide Akinsoyinu" }, { name: "CodeDreadnaught" }],
   keywords: ["Veux-tu Etre", "Valentine"],
+  metadataBase: new URL("https://veux-tu-etre-ma-valentine.vercel.app"),
   openGraph: {
     images: "/logo.svg",
   },
