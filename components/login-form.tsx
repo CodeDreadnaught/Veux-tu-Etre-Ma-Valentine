@@ -59,8 +59,8 @@ export function LoginForm({
           600
         );
 
-        router.replace("/mail");
         globalThis.location.href = "/mail";
+        router.replace("/mail");
         setTimeout(() => setOpen(false), 4000);
       } else {
         toast({
