@@ -9,7 +9,7 @@ export const mails = [
     email: "olumideakinsoyinu@gmail.com",
     subject: "RE: Happy Valentine's Day",
     text: "Gorgeous,\n\nIt is huge honour on my part to do absolutely anything for you.\n\nYou think of me as really sweet and thoughtful? I am about to spend the entire day with my teeth out.\n\nSincerely, you are the woman of my dreams and no one else comes close; not in this world, not in worlds to come.\n\nMy sun rises and sets with you, Your Grace.\n\n\nEternally Yours,\nO.A Akinsoyinu",
-    date: "2025-02-14T00:00:00",
+    date: "2025-02-18T08:20:00",
     read: false,
   },
   {
