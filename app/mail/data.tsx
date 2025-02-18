@@ -3,6 +3,16 @@ import { recipientObject } from "../api/userinfo/userinfo";
 
 export const mails = [
   {
+    id: "za9ccb902-1tc4-1443e1-840d-7b25b69fm77mi5f",
+    profileImage: "/olumide.jpg",
+    name: "Olumide Akinsoyinu",
+    email: "olumideakinsoyinu@gmail.com",
+    subject: "RE: Happy Valentine's Day",
+    text: "Gorgeous,\n\nIt is huge honour on my part to do absolutely anything for you.\n\nYou think of me as really sweet and thoughtful? I am about to spend the entire day with my teeth out.\n\nSincerely, you are the woman of my dreams and no one else comes close; not in this world, not in worlds to come.\n\nMy sun rises and sets with you, Your Grace.\n\n\nEternally Yours,\nO.A Akinsoyinu",
+    date: "2025-02-14T00:00:00",
+    read: false,
+  },
+  {
     id: "5a8ccb902-12c4-1143e1-840d-7b25b5ee77535",
     profileImage: "/olumide.jpg",
     name: "Olumide Akinsoyinu",
@@ -10,7 +20,7 @@ export const mails = [
     subject: "Happy Valentine's Day",
     text: "Baby-girl,\n\nI must have done something extremely remarkable in a past life to get you in this one.\n\nYou are who I dreamed up when I was little. But better, way way better.\n\nTo be candid, you are the best part of everyday for me and this by all standards is a gross understatement.\n\nMy sun rises and sets with you, you are to me what oxygen is to humans.\n\nHappy Valentine's Day, Gorgeous.\n\n\nNow and Always,\nO.A Akinsoyinu",
     date: "2025-02-14T00:00:00",
-    read: false,
+    read: true,
   },
   {
     id: "6c84fb90-12c4-11e1-840d-7b25c5ee775a",
@@ -20,7 +30,7 @@ export const mails = [
     subject: "Will You Be My Valentine?",
     text: "Hey Gorgeous,\n\nI am right in front of my computer, reflecting on everything we have shared and I cannot but smile.\n\nIn all honesty, I have no idea of what I was doing with my life before you graced it with your presence. Meeting you and falling in love with you is the highlight of the previous year for me. With every passing day, that feeling only deepens and now, I find myself more enchanted by you than I could have ever imagined.\n\nEvery single day, I think about all the incredible moments we have experienced—the quiet tender ones, the loud spontaneous ones and everything in between. Each memory is a treasure that I will keep forever and I cannot help but imagine all the amazing ones still waiting for us in the future.\n\nWith every laugh, every touch, every conversation; I have fallen deeper into something I never knew I could experience. It is not more than just love, it is a feeling of being at home with you; I strongly believe that the universe knew that I needed you.\n\nAnd yet, despite how much I adore you, there is still a part of me that can never fully express the extent of what and how I feel about you. Words do not properly convey what my heart knows to be true and what my heart feels for you.\n\nStunning, you opened up parts of me I never even knew existed and you have made me see the world through a lens of possibility, hope and endless love. The way you light up a room, the way your smile instantly makes everything feel right, the way your presence brings peace to my soul—these are just some of the many reasons I am beyond grateful for you every single day.\n\nWith the fourteen of February around the corner, I find myself wanting to ask you something—something simple yet profound: Will you be my Valentine, Gorgeous?\n\n\nYours Till Eternity Fades,\nO.A Akinsoyinu",
     date: "2025-02-04T17:55:00",
-    read: false,
+    read: true,
   },
   {
     id: "110e8400-e29b-11d4-a716-446655440000",
