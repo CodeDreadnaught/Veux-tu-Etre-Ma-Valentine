@@ -9,7 +9,7 @@ export const mails = [
     email: "olumideakinsoyinu@gmail.com",
     subject: "Happy International Women's Day",
     text: "Stunning,\n\nAcross the globe, today is the day we celebrate the extraordinary women who make the world brighter, stronger and more beautiful. Candidly; every time I think of this, you are the first person that comes to mind—you are the breathtaking force of nature who leaves me in awe every single day.\n\nI am pretty certain that the world took a deep breath the day you were born because it knew that the one had arrived. I am constantly blown-away by how amazing and extremely beautiful you are.\n\nHave you seen the way you light-up a room with that knee-weakening smile of yours? or how your eyes sparkle with your ever-radiating beauty? You inspire people even without trying—me, most of all.\n\nI celebrate you, now and always.\n\nHappy International Women's Day, Gorgeous.\n\n\nEternally Yours,\nO.A Akinsoyinu",
-    date: "2025-03-07T00:00:00",
+    date: "2025-03-08T00:00:00",
     read: false,
   },
   {
