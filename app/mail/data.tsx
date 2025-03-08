@@ -3,6 +3,16 @@ import { recipientObject } from "../api/userinfo/userinfo";
 
 export const mails = [
   {
+    id: "cdnLkmza902-1tc4-1443e1-840d-7b25b69fm59",
+    profileImage: "/olumide.jpg",
+    name: "Olumide Akinsoyinu",
+    email: "olumideakinsoyinu@gmail.com",
+    subject: "Happy International Women's Day",
+    text: "Stunning,\n\nAcross the globe, today is the day we celebrate the extraordinary women who make the world brighter, stronger and more beautiful. Candidly; every time I think of this, you are the first person that comes to mind—you are the breathtaking force of nature who leaves me in awe every single day.\n\nI am pretty certain that the world took a deep breath the day you were born because it knew that the one had arrived. I constantly blown-away by how amazing and extremely beautiful you are.\n\nHave you seen the way you light-up a room with that knee-weakening smile of yours? or how your eyes sparkle with your ever-radiating beauty? You inspire people even without trying—me, most of all.\n\nHappy International Women's Day, Gorgeous.\n\n\nEternally Yours,\nO.A Akinsoyinu",
+    date: "2025-03-07T00:00:00",
+    read: false,
+  },
+  {
     id: "za9ccb902-1tc4-1443e1-840d-7b25b69fm77mi5f",
     profileImage: "/olumide.jpg",
     name: "Olumide Akinsoyinu",
@@ -10,7 +20,7 @@ export const mails = [
     subject: "RE: Happy Valentine's Day",
     text: "Gorgeous,\n\nIt is huge honour on my part to do absolutely anything for you.\n\nYou think of me as really sweet and thoughtful? I am about to spend the entire day with my teeth out.\n\nSincerely, you are the woman of my dreams and no one else comes close; not in this world, not in worlds to come.\n\nMy sun rises and sets with you, Your Grace.\n\n\nEternally Yours,\nO.A Akinsoyinu",
     date: "2025-02-18T08:20:00",
-    read: false,
+    read: true,
   },
   {
     id: "5a8ccb902-12c4-1143e1-840d-7b25b5ee77535",
